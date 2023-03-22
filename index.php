@@ -9,38 +9,8 @@
 
 <?php
 
-class Movie
-{
-    // dichiaro le variabili d'istanza
-    public $title;
-    public $year;
-    public $genre;
-
-    // definisco il costruttore
-    function __construct($_title, $_year, $_genre)
-    {
-        $this->title = $_title;
-        $this->setYear($_year);
-        $this->genre = $_genre;
-    }
-
-    // definisco il metodo "setYear"
-    public function setYear($year)
-    {
-        if (!is_int($year)) return false;
-        $this->year = $year;
-    }
-}
-
-class Genre
-{
-}
-
-// genero un array di oggetti (istanze)
-$movies_array = [
-    new Movie("Avatar", 2009, "Fantasy"),
-    new Movie("Io sono leggenda", 2007, "Thriller"),
-];
+include_once __DIR__ . "/models/Movie.php";
+include_once __DIR__ . "/data/db.php";
 
 ?>
 
@@ -51,23 +21,24 @@ $movies_array = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <title>Movies</title>
 </head>
 
 <body>
-    <ul>
-        <!-- ciclo l'array e per ogni istanza genero un "ul" -->
-        <?php foreach ($movies_array as $movie) : ?>
-        <br>
-
-        <!-- per ogni istanza nell' array stampo le proprietà -->
-        <?php foreach ($movie as $detail) : ?>
-        <li>
-            <?= $detail ?>
-        </li>
-        <?php endforeach ?>
-        <?php endforeach ?>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <?php foreach ($movies_array as $movie) : ?>
+            <div class="col-3 border me-3">
+                <?php foreach ($movie as $detail) : ?>
+                <p><?= $detail ?></p>
+                <?php endforeach ?>
+            </div>
+            <?php endforeach ?>
+        </div>
+    </div>
 </body>
 
 </html>
