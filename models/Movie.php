@@ -11,7 +11,7 @@ class Movie
     function __construct(
         string $_title,
         int $_year,
-        string $_genre
+        array $_genre
     ) {
         $this->title = $_title;
         $this->setYear($_year);

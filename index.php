@@ -32,8 +32,13 @@ include_once __DIR__ . "/data/db.php";
         <div class="row">
             <?php foreach ($movies_array as $movie) : ?>
             <div class="col-3 border me-3">
-                <?php foreach ($movie as $detail) : ?>
-                <p><?= $detail ?></p>
+                <p><strong>Title:</strong> <?= $movie->title ?></p>
+                <p><strong>Year: </strong><?= $movie->year ?></p>
+                <p><strong>Genre</strong>:</p>
+                <?php foreach ($movie->genre as $genre) : ?>
+                <ul>
+                    <li><?= $genre ?></li>
+                </ul>
                 <?php endforeach ?>
             </div>
             <?php endforeach ?>
